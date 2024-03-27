@@ -2,21 +2,23 @@
 
 namespace App\Providers\Filament;
 
-use Filament\Http\Middleware\Authenticate;
-use Filament\Http\Middleware\DisableBladeIconComponents;
-use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Filament\Pages;
 use Filament\Panel;
-use Filament\PanelProvider;
-use Filament\Support\Colors\Color;
 use Filament\Widgets;
-use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
+use Filament\PanelProvider;
+use App\Filament\Pages\Auth\Login;
+use Filament\Support\Colors\Color;
+use Filament\Http\Middleware\Authenticate;
+use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Cookie\Middleware\EncryptCookies;
-use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
-use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Filament\Http\Middleware\DisableBladeIconComponents;
+use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
+use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
+use DutchCodingCompany\FilamentSocialite\FilamentSocialitePlugin;
 
 class StudentPanelProvider extends PanelProvider
 {
@@ -25,8 +27,8 @@ class StudentPanelProvider extends PanelProvider
         return $panel
             ->default()
             ->id('student')
-            ->path('/')
-            ->login()
+            ->path('')
+            ->login(Login::class)
             ->colors([
                 'primary' => Color::hex('#004a74'),
             ])
@@ -34,7 +36,6 @@ class StudentPanelProvider extends PanelProvider
             ->font('Plus Jakarta Sans')
             ->brandLogo(asset('images/logo.svg'))
             ->brandLogoHeight('1.25rem')
-            ->spa(true)
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([
@@ -57,6 +58,16 @@ class StudentPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
-            ]);
+            ])
+            ->plugin(FilamentSocialitePlugin::make()
+                ->setProviders([
+                    'google' => [
+                        'label' => 'Continue with Google',
+                        'icon' => 'icon-google',
+                        'color' => 'primary',
+                    ],
+                ])
+                ->setRegistrationEnabled(true)
+            );
     }
 }
