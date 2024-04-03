@@ -3,7 +3,7 @@
 namespace App\Filament\Resources\TemplateResource\Templates;
 
 abstract class CreateTemplate {
-  protected static ?string $document = null;
+    public static ?string $docView = null;
 
-  abstract public static function getSchema(): array;
+    abstract public static function getSchema(): array;
 }

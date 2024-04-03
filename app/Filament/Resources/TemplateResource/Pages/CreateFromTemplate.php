@@ -46,20 +46,23 @@ class CreateFromTemplate extends Page
     public function getTitle(): string
     {
         $record = $this->getRecord();
+        
         return $record->name;
     }
 
     private function getClassFile(string $class): string
     {
-        return 'app\\Filament\\Resources\\TemplateResource\\Templates\\' . $class;
+        $path = 'app\\Filament\\Resources\\TemplateResource\\Templates\\';
+
+        return $path . $class;
     }
 
     public function form(Form $form): Form
     {
-        
         return $form
             ->schema([
                 Section::make($this->class::getSchema())
+                    ->columns(2)
             ])
             ->statePath('data');
     }
