@@ -25,6 +25,7 @@ class TemplateResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
+                    ->label('Nama')
                     ->searchable(true)
                     ->size('md')
                     ->weight(FontWeight::Medium)

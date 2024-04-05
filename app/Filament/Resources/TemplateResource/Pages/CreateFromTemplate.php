@@ -10,6 +10,7 @@ use Filament\Resources\Pages\Page;
 use Filament\Forms\Components\Section;
 use App\Filament\Resources\TemplateResource;
 use Filament\Pages\Concerns\InteractsWithFormActions;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 use Filament\Resources\Pages\Concerns\InteractsWithRecord;
 
 class CreateFromTemplate extends Page
@@ -78,14 +79,9 @@ class CreateFromTemplate extends Page
     protected function getSaveFormAction(): Action
     {
         return Action::make('Create')
-            ->label('Create')
-            ->action(function() {
-                $docView = $this->class::$docView;
-                $validated = $this->validate();
-                $data = $validated['data'];
-                return response()->streamDownload(function () use ($docView, $data) {
-                    echo Pdf::loadView($docView, $data)->stream();
-                }, 'document.pdf');
+            ->label('Buat')
+            ->action(function () {
+                return $this->generatePdf();
             });
     }
 
@@ -97,4 +93,17 @@ class CreateFromTemplate extends Page
             ->color('gray');
     }
 
+    protected function generatePdf(): StreamedResponse
+    {
+        $filename = $this->getRecord()->name . '.pdf';
+
+        $docView = $this->class::$docView;
+
+        $validated = $this->validate();
+        $data = $validated['data'];
+
+        return response()->streamDownload(function () use ($docView, $data) {
+            echo Pdf::loadView($docView, $data)->stream();
+        }, $filename);
+    }
 }

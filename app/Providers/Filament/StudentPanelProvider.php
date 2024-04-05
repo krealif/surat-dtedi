@@ -54,7 +54,7 @@ class StudentPanelProvider extends PanelProvider
             ->plugin(FilamentSocialitePlugin::make()
                 ->setProviders([
                     'google' => [
-                        'label' => 'Continue with Google',
+                        'label' => 'Login dengan Google',
                         'icon' => 'icon-google',
                         'color' => 'primary',
                     ],

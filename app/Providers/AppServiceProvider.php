@@ -2,8 +2,9 @@
 
 namespace App\Providers;
 
-use App\Filament\Resources\TemplateResource;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use App\Filament\Resources\TemplateResource;
 use DutchCodingCompany\FilamentSocialite\Facades\FilamentSocialite;
 use DutchCodingCompany\FilamentSocialite\Models\Contracts\FilamentSocialiteUser as FilamentSocialiteUserContract;
 
@@ -27,5 +28,7 @@ class AppServiceProvider extends ServiceProvider
                 TemplateResource::getUrl('index')
             );
         });
+
+        Blade::anonymousComponentNamespace('surat.components', 'surat');
     }
 }
