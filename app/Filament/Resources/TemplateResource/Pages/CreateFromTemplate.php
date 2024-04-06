@@ -53,7 +53,7 @@ class CreateFromTemplate extends Page
 
     private function getClassFile(string $class): string
     {
-        $path = 'app\\Filament\\Resources\\TemplateResource\\Templates\\';
+        $path = 'App\\Filament\\Resources\\TemplateResource\\Templates\\';
 
         return $path . $class;
     }
