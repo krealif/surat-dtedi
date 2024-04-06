@@ -5,7 +5,3 @@ use Illuminate\Support\Facades\Route;
 Route::get('/templates', function () {
   return redirect('/');
 });
-
-Route::get('preview', function () {
-  return view('surat.pi');
-});
