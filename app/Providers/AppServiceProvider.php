@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use App\Filament\Resources\TemplateResource;
@@ -23,6 +24,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        if (app()->environment('production')) {
+            URL::forceScheme('https');
+        }
+
         FilamentSocialite::setLoginRedirectCallback(function (string $provider, FilamentSocialiteUserContract $socialiteUser) {
             return redirect()->intended(
                 TemplateResource::getUrl('index')
