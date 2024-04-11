@@ -39,12 +39,11 @@ class SuratPI extends CreateTemplate
                         ->maxLength(255)
                         ->required(),
                     NimInput::make('nim')
-                        ->format()
                         ->label('NIM')
                         ->validationAttribute('NIM')
+                        ->format()
                         ->required(),
                     Select::make('jurusan')
-                        ->native(false)
                         ->options(Major::getValues())
                         ->required(),
                 ])

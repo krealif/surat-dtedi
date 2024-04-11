@@ -28,12 +28,12 @@ class StudentPanelProvider extends PanelProvider
             ->path('')
             ->login(Login::class)
             ->colors([
-                'primary' => Color::hex('#004a74'),
+                'primary' => Color::hex('#004A74'),
             ])
             ->darkMode(false)
-            ->font('Plus Jakarta Sans')
             ->brandLogo(asset('images/logo.svg'))
-            ->brandLogoHeight('1.25rem')
+            ->brandLogoHeight('1.2rem')
+            ->favicon(asset('favicon.png'))
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
@@ -56,7 +56,7 @@ class StudentPanelProvider extends PanelProvider
                     'google' => [
                         'label' => 'Login dengan Google',
                         'icon' => 'icon-google',
-                        'color' => 'primary',
+                        'color' => 'gray',
                     ],
                 ])
                 ->setRegistrationEnabled(true)

@@ -28,7 +28,6 @@ class TemplateResource extends Resource
                     ->label('Nama')
                     ->searchable(true)
                     ->size('md')
-                    ->weight(FontWeight::Medium)
                     ->icon('heroicon-s-document'),
             ])
             ->contentGrid([])
