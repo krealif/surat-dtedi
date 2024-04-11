@@ -9,9 +9,9 @@ use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\DatePicker;
 
-class SuratPI extends CreateTemplate
+class PraktikIndustri extends CreateTemplate
 {
-    public static ?string $docView = 'surat.surat-pi';
+    public static ?string $docView = 'surat.praktik-industri';
 
     public static function getSchema(): array
     {

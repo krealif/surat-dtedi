@@ -13,7 +13,7 @@ class TemplateSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->createTemplate('Surat Praktik Industri', 'SuratPI');
+        $this->createTemplate('Praktik Industri', 'PraktikIndustri');
     }
 
     protected function createTemplate(string $name, string $class_name): void
