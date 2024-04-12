@@ -2,13 +2,14 @@
 
 namespace App\Filament\Resources;
 
-use Filament\Tables;
 use App\Models\Template;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
-use Filament\Support\Enums\FontWeight;
+use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Model;
+use Filament\Tables\Columns\Layout\Stack;
 use App\Filament\Resources\TemplateResource\Pages;
+use Filament\Tables\Columns\IconColumn;
 
 class TemplateResource extends Resource
 {
@@ -24,13 +25,21 @@ class TemplateResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')
-                    ->label('Nama')
-                    ->searchable(true)
-                    ->size('md')
-                    ->icon('heroicon-s-document'),
+                Stack::make([
+                    IconColumn::make('name')
+                        ->icon('heroicon-s-document'),
+                    TextColumn::make('name')
+                        ->label('Nama')
+                        ->size(TextColumn\TextColumnSize::Medium)
+                        ->searchable(true),
+                ])->space(2)
             ])
-            ->contentGrid([])
+            ->contentGrid([
+                'sm' => 1,
+                'md' => 2,
+                'xl' => 3,
+            ])
+            ->defaultSort('name')
             ->recordUrl(
                 fn (Model $record): string => Pages\CreateFromTemplate::getUrl([$record->id]),
             );
