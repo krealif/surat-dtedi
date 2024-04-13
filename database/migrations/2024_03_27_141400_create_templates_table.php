@@ -16,6 +16,10 @@ return new class extends Migration
             $table->string('name');
             $table->string('class_name');
             $table->timestamps();
+            $table->unique([
+                'name',
+                'class_name',
+            ]);
         });
     }
 
