@@ -3,7 +3,6 @@
 namespace App\Filament\Resources\TemplateResource\Pages;
 
 use App\Filament\Resources\TemplateResource;
-use Filament\Widgets;
 use Filament\Resources\Pages\ListRecords;
 
 class ListTemplates extends ListRecords

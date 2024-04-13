@@ -2,16 +2,16 @@
 
 namespace App\Filament\Resources\TemplateResource\Pages;
 
-use Filament\Forms\Form;
-use Illuminate\Support\Js;
-use Filament\Actions\Action;
-use Barryvdh\DomPDF\Facade\Pdf;
-use Filament\Resources\Pages\Page;
-use Filament\Forms\Components\Section;
 use App\Filament\Resources\TemplateResource;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Filament\Actions\Action;
+use Filament\Forms\Components\Section;
+use Filament\Forms\Form;
 use Filament\Pages\Concerns\InteractsWithFormActions;
-use Symfony\Component\HttpFoundation\StreamedResponse;
 use Filament\Resources\Pages\Concerns\InteractsWithRecord;
+use Filament\Resources\Pages\Page;
+use Illuminate\Support\Js;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class CreateFromTemplate extends Page
 {
@@ -25,8 +25,8 @@ class CreateFromTemplate extends Page
     public ?array $data = [];
 
     public string $class;
-    
-    public function mount(int | string $record): void 
+
+    public function mount(int|string $record): void
     {
         $this->record = $this->resolveRecord($record);
 
@@ -47,7 +47,7 @@ class CreateFromTemplate extends Page
     public function getTitle(): string
     {
         $record = $this->getRecord();
-        
+
         return $record->name;
     }
 
@@ -55,7 +55,7 @@ class CreateFromTemplate extends Page
     {
         $path = 'App\\Filament\\Resources\\TemplateResource\\Templates\\';
 
-        return $path . $class;
+        return $path.$class;
     }
 
     public function form(Form $form): Form
@@ -63,7 +63,7 @@ class CreateFromTemplate extends Page
         return $form
             ->schema([
                 Section::make($this->class::getSchema())
-                    ->columns(2)
+                    ->columns(2),
             ])
             ->statePath('data');
     }
@@ -89,13 +89,13 @@ class CreateFromTemplate extends Page
     {
         return Action::make('cancel')
             ->label(__('filament-panels::resources/pages/edit-record.form.actions.cancel.label'))
-            ->alpineClickHandler('document.referrer ? window.history.back() : (window.location.href = ' . Js::from($this->previousUrl ?? static::getResource()::getUrl()) . ')')
+            ->alpineClickHandler('document.referrer ? window.history.back() : (window.location.href = '.Js::from($this->previousUrl ?? static::getResource()::getUrl()).')')
             ->color('gray');
     }
 
     protected function generatePdf(): StreamedResponse
     {
-        $filename = $this->getRecord()->name . '.pdf';
+        $filename = $this->getRecord()->name.'.pdf';
 
         $docView = $this->class::$docView;
 

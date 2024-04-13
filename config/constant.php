@@ -2,7 +2,7 @@
 
 return [
 
-  /*
+    /*
   |--------------------------------------------------------------------------
   | Constants
   |--------------------------------------------------------------------------
@@ -11,9 +11,9 @@ return [
   | constants that can be use inside your application
   */
 
-  'kadep' => [
-      'name' => 'Nur Rohman Rosyid, S.T., M.T., D.Eng.',
-      'nika' => '111197510201206101',
-  ],
-  
+    'kadep' => [
+        'name' => 'Nur Rohman Rosyid, S.T., M.T., D.Eng.',
+        'nika' => '111197510201206101',
+    ],
+
 ];

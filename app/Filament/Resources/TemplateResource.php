@@ -2,14 +2,14 @@
 
 namespace App\Filament\Resources;
 
-use App\Models\Template;
-use Filament\Tables\Table;
-use Filament\Resources\Resource;
-use Filament\Tables\Columns\TextColumn;
-use Illuminate\Database\Eloquent\Model;
-use Filament\Tables\Columns\Layout\Stack;
 use App\Filament\Resources\TemplateResource\Pages;
+use App\Models\Template;
+use Filament\Resources\Resource;
 use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\Layout\Stack;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Model;
 
 class TemplateResource extends Resource
 {
@@ -32,7 +32,7 @@ class TemplateResource extends Resource
                         ->label('Nama')
                         ->size(TextColumn\TextColumnSize::Medium)
                         ->searchable(true),
-                ])->space(2)
+                ])->space(2),
             ])
             ->contentGrid([
                 'sm' => 1,

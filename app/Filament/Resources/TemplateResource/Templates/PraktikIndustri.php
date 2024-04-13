@@ -4,10 +4,10 @@ namespace App\Filament\Resources\TemplateResource\Templates;
 
 use App\Enums\Major;
 use App\Forms\Components\NimInput;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\Repeater;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 
 class PraktikIndustri extends CreateTemplate
 {
@@ -51,7 +51,7 @@ class PraktikIndustri extends CreateTemplate
                 ->columns(2)
                 ->columnSpan('full')
                 ->maxItems(10)
-                ->required()
+                ->required(),
         ];
     }
 }
