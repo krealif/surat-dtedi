@@ -4,7 +4,15 @@ namespace App\Filament\Resources\TemplateResource\Templates;
 
 abstract class CreateTemplate
 {
-    public static ?string $docView = null;
+    /**
+     * @var view-string
+     */
+    public static ?string $view = null;
 
-    abstract public static function getSchema(): array;
+    /**
+     * Define form schema.
+     *
+     * @return array
+     */
+    abstract public static function getSchema();
 }

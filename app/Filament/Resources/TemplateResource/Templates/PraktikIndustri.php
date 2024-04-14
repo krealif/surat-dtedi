@@ -11,7 +11,7 @@ use Filament\Forms\Components\TextInput;
 
 class PraktikIndustri extends CreateTemplate
 {
-    public static ?string $docView = 'surat.praktik-industri';
+    public static ?string $view = 'surat.praktik-industri';
 
     public static function getSchema(): array
     {

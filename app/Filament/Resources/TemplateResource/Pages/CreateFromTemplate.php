@@ -97,13 +97,13 @@ class CreateFromTemplate extends Page
     {
         $filename = $this->getRecord()->name.'.pdf';
 
-        $docView = $this->class::$docView;
+        $view = $this->class::$view;
 
         $validated = $this->validate();
         $data = $validated['data'];
 
-        return response()->streamDownload(function () use ($docView, $data) {
-            echo Pdf::loadView($docView, $data)->stream();
+        return response()->streamDownload(function () use ($view, $data) {
+            echo Pdf::loadView($view, $data)->stream();
         }, $filename);
     }
 }
