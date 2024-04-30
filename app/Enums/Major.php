@@ -9,7 +9,7 @@ enum Major: string
     case TRE = 'Teknologi Rekayasa Elektro';
     case TRIK = 'Teknologi Rekayasa Instrumentasi dan Kontrol';
 
-    public static function getValues(): array
+    public static function toArray(): array
     {
         return array_column(self::cases(), 'name', 'value');
     }

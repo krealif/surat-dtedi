@@ -44,7 +44,7 @@ class PraktikIndustri extends CreateTemplate
                         ->format()
                         ->required(),
                     Select::make('jurusan')
-                        ->options(Major::getValues())
+                        ->options(Major::toArray())
                         ->required(),
                 ])
                 ->addActionLabel('Tambah anggota')
