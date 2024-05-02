@@ -5,10 +5,7 @@ namespace {{ namespace }};
 class {{ class }} extends CreateTemplate
 {
     public static ?string $view = '{{ view }}';
-
-    /**
-     * Define form schema.
-     */
+    
     public static function getSchema(): array
     {
         return [
