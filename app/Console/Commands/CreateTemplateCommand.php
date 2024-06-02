@@ -40,13 +40,30 @@ class CreateTemplateCommand extends GeneratorCommand
     }
 
     /**
+     * Get the class name for the generator.
+     *
+     * @return string
+     */
+    protected function getClassName()
+    {
+        $input = $this->getNameInput();
+        $name = Str::studly($input);
+
+        if (str_starts_with($name, 'Surat')) {
+            $name = ltrim($name, "Surat");
+        }
+        
+        return $name;
+    }
+
+    /**
      * Get the view name for the generator.
      *
      * @return string
      */
     protected function getViewName()
     {
-        return Str::kebab($this->getNameInput());
+        return Str::kebab($this->getClassName());
     }
 
     /**
@@ -97,16 +114,17 @@ class CreateTemplateCommand extends GeneratorCommand
      */
     public function handle()
     {
+        $classname = $this->getClassName();
         // First we need to ensure that the given name is not a reserved word within the PHP
         // language and that the class name will actually be valid. If it is not valid we
         // can error now and prevent from polluting the filesystem using invalid files.
-        if ($this->isReservedName($this->getNameInput())) {
-            $this->components->error('The name "'.$this->getNameInput().'" is reserved by PHP.');
+        if ($this->isReservedName($classname)) {
+            $this->components->error('The name "'.$classname.'" is reserved by PHP.');
 
             return false;
         }
 
-        $name = $this->qualifyClass($this->getNameInput());
+        $name = $this->qualifyClass($classname);
 
         $path = $this->getPath($name);
 
@@ -117,7 +135,7 @@ class CreateTemplateCommand extends GeneratorCommand
         // code is untouched. Otherwise, we will continue generating this class' files.
         if ((! $this->hasOption('force') ||
             ! $this->option('force')) &&
-            $this->alreadyExists($this->getNameInput())) {
+            $this->alreadyExists($classname)) {
 
             $this->components->error($this->type.' already exists.');
 
