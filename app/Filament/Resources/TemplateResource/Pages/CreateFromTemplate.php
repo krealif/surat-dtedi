@@ -7,11 +7,13 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use Filament\Actions\Action;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
+use Filament\Notifications\Notification;
 use Filament\Pages\Concerns\InteractsWithFormActions;
 use Filament\Resources\Pages\Concerns\InteractsWithRecord;
 use Filament\Resources\Pages\Page;
 use Illuminate\Support\Js;
 use Symfony\Component\HttpFoundation\StreamedResponse;
+use Throwable;
 
 class CreateFromTemplate extends Page
 {
@@ -30,7 +32,7 @@ class CreateFromTemplate extends Page
     {
         $this->record = $this->resolveRecord($record);
 
-        $this->class = $this->getClassFile($this->record->class_name);
+        $this->getClassFile();
 
         $this->fillForm();
     }
@@ -51,11 +53,17 @@ class CreateFromTemplate extends Page
         return $record->name;
     }
 
-    private function getClassFile(string $class): string
+    private function getClassFile(): void
     {
-        $path = 'App\\Filament\\Resources\\TemplateResource\\Templates\\';
+        $namespace = 'app\\Filament\\Resources\\TemplateResource\\Templates\\';
+        $class = $namespace.$this->record->class_name;
 
-        return $path.$class;
+        $path = str_replace('\\', DIRECTORY_SEPARATOR, $class);
+        if (file_exists(base_path($path).'.php')) {
+            $this->class = $class;
+        } else {
+            abort(404);
+        }
     }
 
     public function form(Form $form): Form
@@ -93,17 +101,31 @@ class CreateFromTemplate extends Page
             ->color('gray');
     }
 
-    protected function generatePdf(): StreamedResponse
+    protected function generatePdf(): StreamedResponse|false
     {
-        $filename = $this->getRecord()->name.'.pdf';
+        $data = $this->form->getState();
 
-        $view = $this->class::$view;
+        try {
+            $view = $this->class::$view;
+            $pdf = Pdf::loadView($view, $data);
 
-        $validated = $this->validate();
-        $data = $validated['data'];
+            Notification::make()
+                ->success()
+                ->title('Surat berhasil dibuat')
+                ->send();
 
-        return response()->streamDownload(function () use ($view, $data) {
-            echo Pdf::loadView($view, $data)->stream();
-        }, $filename);
+            $filename = $this->getRecord()->name.'.pdf';
+
+            return response()->streamDownload(function () use ($pdf) {
+                echo $pdf->stream();
+            }, $filename);
+        } catch (Throwable $exception) {
+            Notification::make()
+                ->danger()
+                ->title('Maaf terjadi kesalahan')
+                ->send();
+
+            return false;
+        }
     }
 }
