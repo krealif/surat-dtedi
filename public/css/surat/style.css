@@ -76,6 +76,7 @@ h1, p {
 
 .info-list td {
   padding: 0;
+  vertical-align: top;
 }
 
 .table {
