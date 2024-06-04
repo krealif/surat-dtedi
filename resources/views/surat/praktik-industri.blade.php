@@ -39,7 +39,7 @@
         </tr>
       @endforeach
     </table>
-    <p class="justify">Untuk melakukan kegiatan Praktik Industri di {{ $perusahaan }} selama {{ floor($totalMonth) }} bulan dari tanggal {{ $start->translatedFormat('j F Y'); }} s.d. {{ $end->translatedFormat('j F Y'); }}, dengan dosen pembimbing : {{ $pembimbing }}</p>
+    <p class="justify">Untuk melakukan kegiatan Praktik Industri di {{ $perusahaan }} selama {{ floor($totalMonth) }} bulan dari tanggal {{ $start->translatedFormat('j F Y'); }} s.d. {{ $end->translatedFormat('j F Y'); }}, dengan dosen pembimbing : {{ $dospem }}</p>
     <p class="justify">Demikian surat tugas ini dibuat, untuk dapat dipergunakan sebagaimana mestinya.</p>
   </div>
   <x-surat::ttd />

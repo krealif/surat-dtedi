@@ -20,7 +20,7 @@ class PraktikIndustri extends CreateTemplate
                 ->minLength(3)
                 ->maxLength(255)
                 ->required(),
-            TextInput::make('pembimbing')
+            TextInput::make('dospem')
                 ->label('Dosen pembimbing')
                 ->minLength(3)
                 ->maxLength(255)
