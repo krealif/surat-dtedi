@@ -16,7 +16,7 @@ class RekomendasiBeasiswa extends CreateTemplate
         return [
             Section::make([
                 TextInput::make('nama')
-                    ->minLength(3)
+                    ->minLength(2)
                     ->required(),
                 NimInput::make('nim')
                     ->label('NIM')
@@ -35,12 +35,12 @@ class RekomendasiBeasiswa extends CreateTemplate
                     ->maxValue(144)
                     ->required(),
                 TextInput::make('alamat')
-                    ->minLength(3)
+                    ->minLength(2)
                     ->maxLength(255)
                     ->required(),
                 TextInput::make('beasiswa')
                     ->label('Pemberi Beasiswa')
-                    ->minLength(3)
+                    ->minLength(2)
                     ->maxLength(255)
                     ->required(),
             ])

@@ -38,11 +38,11 @@ class MagangPmmb extends CreateTemplate
                     ->minLength(2)
                     ->required(),
                 DatePicker::make('tgl_mulai')
-                    ->label('Tanggal mulai')
+                    ->label('Tanggal Mulai')
                     ->before('tgl_selesai')
                     ->required(),
                 DatePicker::make('tgl_selesai')
-                    ->label('Tanggal selesai')
+                    ->label('Tanggal Selesai')
                     ->required(),
             ])
                 ->columns(2),

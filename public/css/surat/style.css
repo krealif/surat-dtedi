@@ -108,3 +108,8 @@ h1, p {
 .ttd span {
   display: block;
 }
+
+.tgl-right {
+  float: right;
+  margin-bottom: 8px;
+}

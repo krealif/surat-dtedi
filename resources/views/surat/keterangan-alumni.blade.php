@@ -32,7 +32,7 @@
     </x-surat::info-list>
     
     <p class="justify">Adalah benar-benar alumni Sekolah Vokasi Universitas Gadjah Mada tahun {{ $thn_lulus }} dari Program Studi {{ $prodi }}</p>
-    <p class="justify">Demikian surat keterangan ini dibuat untuk {{ $keterangan }}.</p>
+    <p class="justify">Demikian surat keterangan ini dibuat {{ $keterangan }}.</p>
   </div>
-  <x-surat::ttd />
+  <x-surat::ttd :atasNama=true />
 </x-surat::document>

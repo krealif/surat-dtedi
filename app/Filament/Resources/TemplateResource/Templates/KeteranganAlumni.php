@@ -35,6 +35,7 @@ class KeteranganAlumni extends CreateTemplate
                     ->required(),
                 TextInput::make('keterangan')
                     ->label('Tujuan Pengajuan')
+                    ->helperText('Contoh: untuk keperluan melengkapi berkas')
                     ->minLength(5)
                     ->maxLength(255)
                     ->columnSpanFull()

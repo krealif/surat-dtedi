@@ -53,5 +53,5 @@
     <p class="justify">Adapun surat keterangan ini kami buat sebagai persyaratan {{ $keterangan }}.</p>
     <p class="justify">Demikian untuk dapat dipergunakan sebagaimana mestinya.</p>
   </div>
-  <x-surat::ttd />
+  <x-surat::ttd :atasNama=true />
 </x-surat::document>

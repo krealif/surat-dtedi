@@ -35,7 +35,7 @@
         {{ $nim }}
       </x-surat::info-item>
       <x-surat::info-item label="Prodi">
-        Sarjana Terapan {{ $prodi }} 
+        {{ $prodi }} 
       </x-surat::info-item>
       <x-surat::info-item label="Dosen Pembimbing">
         {{ $dospem }}

@@ -56,7 +56,7 @@ class PraktikIndustri extends CreateTemplate
                     ->columnSpan('full')
                     ->maxItems(10)
                     ->required(),
-            ])
+            ]),
         ];
     }
 }
