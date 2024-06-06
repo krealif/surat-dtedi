@@ -2,23 +2,14 @@
 
 namespace App\Filament\Resources\TemplateResource\Templates;
 
-use App\Enums\Major;
 use App\Forms\Components\IpkInput;
 use App\Forms\Components\NimInput;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\DatePicker;
-use Filament\Forms\Components\Number;
-use App\Filament\Resources\TemplateResource\Templates\CreateTemplate;
 
 class RekomendasiBeasiswa extends CreateTemplate
 {
     public static ?string $view = 'surat.rekomendasi-beasiswa';
 
-    /**
-     * Define form schema.
-     */
     public static function getSchema(): array
     {
         return [
@@ -31,11 +22,10 @@ class RekomendasiBeasiswa extends CreateTemplate
                 ->validationAttribute('NIM')
                 ->format()
                 ->required(),
-            TextInput::make('ipk')
+            IpkInput::make('ipk')
                 ->label('IPK')
-                ->numeric()
-                ->inputMode('decimal')
-                ->placeholder('0.00 - 4.00')
+                ->validationAttribute('IPK')
+                ->format()
                 ->required(),
             TextInput::make('sks')
                 ->label('SKS')
@@ -47,6 +37,7 @@ class RekomendasiBeasiswa extends CreateTemplate
                 ->maxLength(255)
                 ->required(),
             TextInput::make('beasiswa')
+                ->label('Pemberi Beasiswa')
                 ->minLength(3)
                 ->maxLength(255)
                 ->required(),

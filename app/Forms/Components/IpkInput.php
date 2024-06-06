@@ -2,31 +2,17 @@
 
 namespace App\Forms\Components;
 
-use Filament\Forms\Components\Number;
-use Illuminate\Support\Str;
+use Filament\Forms\Components\TextInput;
 
-class IpkInput extends Number
+class IpkInput extends TextInput
 {
-    protected function setUp()
+    public function format(): static
     {
-        parent::setUp();
-
-        $this->defaultStep(0.01)
-            ->min(0)
-            ->max(4)
-            ->decimals(2)
+        return $this
             ->placeholder('0.00 - 4.00')
-            ->append('IPK');
-    }
-
-    public function validate()
-    {
-        return parent::validate()
-            ->rules('numeric', 'min:0', 'max:4');
-    }
-
-    public function resolveName()
-    {
-        return Str::kebab($this->name);
+            ->numeric()
+            ->inputMode('decimal')
+            ->step(.1)
+            ->regex('/^[0-4]\.\d{2}$/');
     }
 }
