@@ -76,6 +76,7 @@ h1, p {
 
 .info-list td {
   padding: 0;
+  vertical-align: top;
 }
 
 .table {
@@ -106,4 +107,9 @@ h1, p {
 
 .ttd span {
   display: block;
+}
+
+.tgl-right {
+  float: right;
+  margin-bottom: 8px;
 }
