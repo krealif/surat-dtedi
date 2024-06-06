@@ -61,10 +61,7 @@ class CreateFromTemplate extends Page
     public function form(Form $form): Form
     {
         return $form
-            ->schema([
-                Section::make($this->class::getSchema())
-                    ->columns(2),
-            ])
+            ->schema($this->class::getSchema())
             ->statePath('data');
     }
 

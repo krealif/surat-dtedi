@@ -35,7 +35,7 @@
           <td style="text-align: center">{{ $loop->iteration . '.' }}</td>
           <td>{{ $anggota['nama'] }}</td>
           <td>{{ $anggota['nim'] }}</td>
-          <td>{{ $anggota['jurusan'] }}</td>
+          <td>{{ $anggota['prodi'] }}</td>
         </tr>
       @endforeach
     </table>
