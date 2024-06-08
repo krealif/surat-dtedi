@@ -55,10 +55,12 @@ class CreateFromTemplate extends Page
 
     private function getClassFile(): void
     {
-        $namespace = 'app\\Filament\\Resources\\TemplateResource\\Templates\\';
+        $namespace = 'App\\Filament\\Resources\\TemplateResource\\Templates\\';
         $class = $namespace.$this->record->class_name;
 
         $path = str_replace('\\', DIRECTORY_SEPARATOR, $class);
+        $path = lcfirst($path);
+        
         if (file_exists(base_path($path).'.php')) {
             $this->class = $class;
         } else {
