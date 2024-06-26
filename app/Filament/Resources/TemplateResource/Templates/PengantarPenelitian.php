@@ -17,14 +17,14 @@ class PengantarPenelitian extends CreateTemplate
 
     public static function getSchema(): array
     {
-        $helperText = "Contoh:<br>Yth. Kepala Dinas Pendidikan<br>
-                    Kabupaten Sleman<br>
-                    Jl. Parasamya, Beran, Kec. Sleman<br>
+        $helperText = "Contoh:<br>Yth. Kepala <br>
+                    Dinas Komunikasi dan Informatika Kabupaten Sleman,<br>
+                    Jl. Parasamya No. 1, Beran, Tridadi, Kec. Sleman,<br>
                     Kabupaten Sleman, Daerah Istimewa Yogyakarta 55511";
 
         return [
             Section::make([
-                Textarea::make('penerima')
+                Textarea::make('tujuan')
                     ->rows(4)
                     ->extraInputAttributes(['style' => 'resize:none'])
                     ->helperText(new HtmlString($helperText))
@@ -33,7 +33,7 @@ class PengantarPenelitian extends CreateTemplate
             Section::make([
                 TextInput::make('tempat')
                     ->minLength(2)
-                    ->helperText('Contoh: Dinas Pendidikan Kabupaten Sleman')
+                    ->helperText('Contoh: Dinas Komunikasi dan Informatika')
                     ->required(),
                 TextInput::make('topik')
                     ->minLength(2)

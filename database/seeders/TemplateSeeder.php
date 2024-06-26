@@ -14,14 +14,12 @@ class TemplateSeeder extends Seeder
     public function run(): void
     {
         $this->insertTemplate('Surat Tugas Praktik Industri', 'PraktikIndustri');
-        $this->insertTemplate('Keterangan Aktif Kuliah', 'KeteranganAktifKuliah');
-        $this->insertTemplate('Keterangan Alumni', 'KeteranganAlumni');
-        $this->insertTemplate('Rekomendasi Beasiswa', 'RekomendasiBeasiswa');
-        $this->insertTemplate('Magang PMMB', 'MagangPmmb');
-        $this->insertTemplate('Pengantar Penelitian PA', 'PengantarPenelitian');
-        $this->insertTemplate('Pengantar Praktik Industri 1 Orang', 'PengantarPraktikIndustri1');
-        $this->insertTemplate('Pengantar Praktik Industri 2 Orang atau Lebih', 'PengantarPraktikIndustri2');
-        $this->insertTemplate('Permohonan Magang', 'PermohonanMagang');
+        $this->insertTemplate('Surat Keterangan Aktif Kuliah', 'KeteranganAktifKuliah');
+        $this->insertTemplate('Surat Keterangan Alumni', 'KeteranganAlumni');
+        $this->insertTemplate('Surat Rekomendasi Beasiswa', 'RekomendasiBeasiswa');
+        $this->insertTemplate('Surat Magang MBKM', 'MagangMbkm');
+        $this->insertTemplate('Surat Pengantar Penelitian PA', 'PengantarPenelitian');
+        $this->insertTemplate('Surat Pengantar Praktik Industri', 'PengantarPraktikIndustri');
     }
 
     protected function insertTemplate(string $name, string $class_name): void

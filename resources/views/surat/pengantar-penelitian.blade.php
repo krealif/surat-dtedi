@@ -19,7 +19,7 @@
 
     <x-surat::info-list style="margin-top: 24px;margin-bottom: 24px">
       <x-surat::info-item label="Kepada">
-        {!! nl2br(e($penerima)) !!}
+        {!! nl2br(e($tujuan)) !!}
       </x-surat::info-item>
     </x-surat::info-list>
 

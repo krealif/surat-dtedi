@@ -61,7 +61,7 @@ h1, p {
 }
 
 .body-main * {
-  margin-bottom: 8pt;
+  margin-bottom: 12pt;
 }
 
 .justify {
@@ -93,10 +93,6 @@ h1, p {
 
 .table th {
   font-weight: normal;
-}
-
-.table + p {
-  padding-top: 4pt;
 }
 
 .ttd {

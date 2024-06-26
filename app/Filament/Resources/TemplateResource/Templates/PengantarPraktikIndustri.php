@@ -13,9 +13,9 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\DatePicker;
 
 
-class PengantarPraktikIndustri2 extends CreateTemplate
+class PengantarPraktikIndustri extends CreateTemplate
 {
-    public static ?string $view = 'surat.pengantar-praktik-industri2';
+    public static ?string $view = 'surat.pengantar-praktik-industri';
     
     public static function getSchema(): array
     {
@@ -26,14 +26,11 @@ class PengantarPraktikIndustri2 extends CreateTemplate
                     
         return [
             Section::make([
-                Textarea::make('penerima')
+                Textarea::make('tujuan')
                     ->rows(4)
                     ->extraInputAttributes(['style' => 'resize:none'])
                     ->helperText(new HtmlString($helperText))
-                    ->required(),
-                Select::make('prodi')
-                    ->label('Program Studi')
-                    ->options(Major::toArray())
+                    ->columnSpanFull()
                     ->required(),
                 DatePicker::make('tgl_mulai')
                     ->label('Tanggal Mulai')
@@ -42,7 +39,16 @@ class PengantarPraktikIndustri2 extends CreateTemplate
                 DatePicker::make('tgl_selesai')
                     ->label('Tanggal Selesai')
                     ->required(),
-            ]), 
+                Select::make('prodi')
+                    ->label('Program Studi')
+                    ->options(Major::toArray())
+                    ->required(),
+                TextInput::make('tempat')
+                ->minLength(2)
+                ->helperText('Contoh: Dinas Komunikasi dan Informatika')
+                ->required(),
+            ])
+                ->columns(2), 
             Section::make([
                 Repeater::make('kelompok')
                     ->schema([

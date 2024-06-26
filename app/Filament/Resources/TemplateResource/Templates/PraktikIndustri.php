@@ -32,6 +32,10 @@ class PraktikIndustri extends CreateTemplate
                 DatePicker::make('tgl_selesai')
                     ->label('Tanggal Selesai')
                     ->required(),
+                Select::make('prodi')
+                    ->label('Program Studi')
+                    ->options(Major::toArray())
+                    ->required(),
             ])
                 ->columns(2),
             Section::make([
@@ -44,10 +48,6 @@ class PraktikIndustri extends CreateTemplate
                             ->label('NIM')
                             ->validationAttribute('NIM')
                             ->format()
-                            ->required(),
-                        Select::make('prodi')
-                            ->label('Program Studi')
-                            ->options(Major::toArray())
                             ->required(),
                     ])
                     ->addActionLabel('Tambah Anggota')

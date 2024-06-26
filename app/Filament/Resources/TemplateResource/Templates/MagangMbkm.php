@@ -9,9 +9,9 @@ use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 
-class MagangPmmb extends CreateTemplate
+class MagangMbkm extends CreateTemplate
 {
-    public static ?string $view = 'surat.magang-pmmb';
+    public static ?string $view = 'surat.magang-mbkm';
 
     public static function getSchema(): array
     {

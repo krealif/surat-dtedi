@@ -40,7 +40,7 @@ class KeteranganAktifKuliah extends CreateTemplate
                     ->required(),
                 TextInput::make('keterangan')
                     ->label('Tujuan Pengajuan')
-                    ->helperText('Contoh: untuk mendapatkan tunjangan anak')
+                    ->helperText('Contoh: untuk mendapatkan tunjangan')
                     ->minLength(5)
                     ->columnSpanFull()
                     ->required(),
